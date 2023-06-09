@@ -43,7 +43,7 @@ export default function useMercadoPago() {
                         fetch(
                             `${
                                 import.meta.env.VITE_URL_PAYMENT_MP
-                            }/process-payment`,
+                            }/admin/pay`,
                             {
                                 // entry point backend
                                 method: "POST",
@@ -52,11 +52,13 @@ export default function useMercadoPago() {
                                     "Access-Control-Request-Method":
                                         "GET, POST, DELETE, PUT, OPTIONS",
                                     "Content-Type": "application/json",
+                                    "Access": "2000"
                                 },
                                 body: JSON.stringify({
                                     token,
                                     issuer_id,
                                     payment_method_id,
+                                    amount,
                                     transaction_amount: 1000,
                                     installments: Number(installments),
                                     description: "Descripción del producto",
